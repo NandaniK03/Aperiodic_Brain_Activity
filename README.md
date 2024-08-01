@@ -6,4 +6,4 @@ data hold promise as objective measures for characterizing sleep states.
 
 <br><b>Keywords:</b> Aperiodic, Cognition, Consciousness, EEG, Power-law, FOOOF, Spectral slope 
 
-<br><b>Documentation:</b> https://nandanik03.github.io/Aperiodic_Brain_Activity/
+<br><b>Documentation:</b> https://nandanik03.github.io/FOOOF-docu/index.html
