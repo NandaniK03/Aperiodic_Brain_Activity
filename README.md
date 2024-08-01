@@ -4,6 +4,6 @@ Neural power spectra of sleep electrophysiological signals consist of two major 
 stage sensitivity and brain region interaction. The study also investigates whether aperiodic spectral parameters derived from FOOOF analysis of EEG 
 data hold promise as objective measures for characterizing sleep states.
 
-<br><b>Keywords:</b> Aperiodic, Cognition, Consciousness, EEG, Power-law, FOOOF, Spectral slope Introduction 
+<br><b>Keywords:</b> Aperiodic, Cognition, Consciousness, EEG, Power-law, FOOOF, Spectral slope 
 
 <br><b>Documentation:</b> https://nandanik03.github.io/Aperiodic_Brain_Activity/
