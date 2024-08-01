@@ -1,0 +1,1670 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Code Script &#8212; Sleep EEG: FOOOF Analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=a75df0fd"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'code';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Results" href="result.html" />
+    <link rel="prev" title="Data and Methods" href="data_method.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Sleep EEG: FOOOF Analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_method.html">Data and Methods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Code Script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="result.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="walk-through_script.html">Walk-through script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous_script.html">Miscellaneous Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/NandaniK03/FOOOF-docu" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/code.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Code Script</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-description">General Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-description">Code Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-necessary-libraries">1. Load necessary libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-files">2. Load files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">3. Load Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-psds-to-respective-sleepstages">4. Assigning PSDs to respective sleepstages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-fitting-fooof">5. Model Fitting: FOOOF</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-wake-sleepstage">a. Wake sleepstage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-n1-sleepstage">b. N1 Sleepstage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-n2-sleepstage">c. N2 Sleepstage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-n3-sleepstage">d. N3 Sleepstage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#e-rem-sleepstage">e. REM Sleepstage</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compiling-data">6. Compiling Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#averaging-across-epochs">7. Averaging across Epochs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-results">8. Plotting Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-topoplot">a. Topoplot</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-scatter-plotting">b. Scatter Plotting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="code-script">
+<h1>Code Script<a class="headerlink" href="#code-script" title="Permalink to this heading">#</a></h1>
+<section id="general-description">
+<h2>General Description<a class="headerlink" href="#general-description" title="Permalink to this heading">#</a></h2>
+<p>This script aims to compute the aperiodic component from sleep data and explore the findings across different sleep stages.</p>
+<p>Steps:</p>
+<ol class="arabic simple">
+<li><p>Load the sleep data and its corresponding hypnogram for all subjects.</p></li>
+<li><p>Data Cleanup:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Epoch the data into 30-second intervals.</p></li>
+<li><p>Extract the hypnogram as a sequence for every 30 seconds to align it with the sleep data.</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Power Spectral Density (PSD) Computation:</p></li>
+</ol>
+<ul class="simple">
+<li><p>For each channel, compute the Power Spectral Density (PSD) using Welch’s method with a median of the 4-seconds a 2-seconds step (50% overlap) for each channel</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Fit Aperiodic Components:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Apply the FOOOF algorithm for each 30-second epoch of the PSD data.</p></li>
+<li><p>Save the results of the FOOOF analysis for the aperiodic and periodic parameters.</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>Sleep Stage Averaging:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Average the aperiodic parameters across Wake, N1, N2, N3, and REM sleep stages for each channel.</p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p>Data Aggregation:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Save the averaged aperiodic parameters to a dataframe for further analysis.</p></li>
+</ul>
+<p>Note:</p>
+<ul class="simple">
+<li><p>Ensure that the input sleep data and hypnogram files are in the correct format and structure for proper data processing.</p></li>
+<li><p>The script uses FOOOF and PSD to analyze sleep data. Please refer to the respective papers and documentation for more information.</p></li>
+<li><p>Error handling and code comments are included in the script to enhance code clarity and maintainability.</p></li>
+</ul>
+</section>
+<section id="code-description">
+<h2>Code Description<a class="headerlink" href="#code-description" title="Permalink to this heading">#</a></h2>
+<section id="load-necessary-libraries">
+<h3>1. Load necessary libraries<a class="headerlink" href="#load-necessary-libraries" title="Permalink to this heading">#</a></h3>
+<p>In this code block, we start by loading several essential libraries that will be used throughout the script:</p>
+<ul class="simple">
+<li><p><cite>glob</cite>: This library has been used to load all PSG(Polysomnography) files and corresponding Scored files with .edf extension. It can retrieve the file paths.</p></li>
+<li><p><cite>os</cite>: The <cite>os</cite> library provides functions for interacting with operating system. It has been used to perform file-related operations.</p></li>
+<li><p><cite>yasa</cite>: <cite>yasa</cite> has been used for slicing hypnogram into 30-second windows and creating topoplots for visualization.</p></li>
+<li><p><cite>numpy</cite>: It is a fundamental library for working with numerical data in Python.</p></li>
+<li><p><cite>matplotlib</cite>: This library is amazing for visualizing data. It has been used to create plots and charts.</p></li>
+<li><p><cite>scipy</cite> : welch module from <cite>scipy</cite> has been utilized for computing the Power Spectral Density(psd) of EEG signal. stats module has been used to take trimmed mean of data.</p></li>
+<li><p><cite>seaborn</cite>: <cite>seaborn</cite> provides a high-level interface for drawing attractive and informative statistical graphs</p></li>
+<li><p><cite>mne</cite>: It has been used for reading edf files conatining EEG data</p></li>
+<li><p><cite>pandas</cite>: <cite>pandas</cite> is useful for data manipulation and analysis.</p></li>
+<li><p><cite>FOOOF</cite>: <cite>FOOOF</cite> has been used for model fitting. FOOOF is a fast, efficient, and physiologically-informed tool to parameterize neural power spectra.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Import necessary libraries | Block 0</span>
+
+<span class="kn">import</span> <span class="nn">glob</span> <span class="k">as</span> <span class="nn">gb</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">yasa</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">welch</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">trim_mean</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sb</span>
+<span class="kn">import</span> <span class="nn">mne</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">fooof</span> <span class="kn">import</span> <span class="n">FOOOF</span>
+</pre></div>
+</div>
+</section>
+<section id="load-files">
+<h3>2. Load files<a class="headerlink" href="#load-files" title="Permalink to this heading">#</a></h3>
+<p>The code block below deals with loading files, specifically PSG (Polysomnography) and scored files(hypnogram), for further processing and analysis.</p>
+<ul class="simple">
+<li><p>First we specify the folder path where PSG files/ Scored files are located</p></li>
+<li><p>using <code class="docutils literal notranslate"><span class="pre">glob</span></code> module. we retrieve a list of files in the specified folder with the extension <code class="docutils literal notranslate"><span class="pre">.edf</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psg_files_all</span></code> /  <code class="docutils literal notranslate"><span class="pre">scored_files_all</span></code> list is by default loaded in the lixographic order. These can be sorted in alphabetical order of filenames using <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> function.</p></li>
+<li><p>List of filenames: We change the current working directory to the folder path where PSG files are located (<cite>folder_path_psg</cite>). Using glob, we retrieve a list of PSG files again. The <code class="docutils literal notranslate"><span class="pre">psg_files</span></code> list is sorted to ensure alphabetical ordering of the filenames.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Load files | Block 1</span>
+
+<span class="c1"># PSG files</span>
+
+<span class="c1"># Retrieve a list of files in the folder with a specific extension</span>
+<span class="c1"># Specify the file extension or pattern and the folder path</span>
+<span class="n">folder_path_psg</span> <span class="o">=</span> <span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/FOOOF_data/data&#39;</span>
+<span class="n">file_pattern_psg</span> <span class="o">=</span> <span class="s1">&#39;*.edf&#39;</span>
+
+<span class="c1"># also convert lixographic order to alphabetical order</span>
+<span class="n">psg_files_all</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">gb</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">folder_path_psg</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">file_pattern_psg</span><span class="p">))</span>
+
+<span class="c1"># Scored files</span>
+
+<span class="c1"># Retrieve a list of files in the folder with a specific extension</span>
+<span class="c1"># Specify the file extension or pattern and the folder path</span>
+<span class="n">folder_path_scored</span> <span class="o">=</span> <span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/FOOOF_data/metadata&#39;</span>
+<span class="n">file_pattern_scored</span> <span class="o">=</span> <span class="s1">&#39;*.edf&#39;</span>
+
+<span class="c1"># also convert lixographic order to alphabetical order</span>
+<span class="n">scored_files_all</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">gb</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">folder_path_scored</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span>
+<span class="n">file_pattern_scored</span><span class="p">))</span>
+
+<span class="c1"># List containing files names</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">folder_path_psg</span><span class="p">)</span>
+<span class="n">psg_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">gb</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span> <span class="n">file_pattern_psg</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="load-data">
+<h3>3. Load Data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h3>
+<p>In this code block (Block 2), data loading and processing is performed, including retrieving the 19 required channels along with A1 and A2, filtering the data, and computing the Power Spectral Density (PSD) for each PSG file. Here’s break down of the code:</p>
+<p><strong>a. Data Loading:</strong></p>
+<ul class="simple">
+<li><p>Initialize empty lists <code class="docutils literal notranslate"><span class="pre">hypno_30s_all</span></code> to store sleep stage labels for each epoch (30s window) and <code class="docutils literal notranslate"><span class="pre">psd_all</span></code> to store PSDs for all PSG files.</p></li>
+<li><p>For each pair of PSG and scored files obtained from <code class="docutils literal notranslate"><span class="pre">zip(psg_files_all,</span> <span class="pre">scored_files_all)</span></code>, we read the PSG data using <code class="docutils literal notranslate"><span class="pre">mne.io.read_raw_edf</span></code> and store the sampling rate (srate).</p></li>
+</ul>
+<p><strong>b. Channel Selection and Bandpass Filtering:</strong></p>
+<ul class="simple">
+<li><p>19 specific channels are to be picked, including A1 and A2, from the PSG data using MNE’s <code class="docutils literal notranslate"><span class="pre">pick_channels</span></code>.</p></li>
+<li><p>Note that different PSG files may contain different format of labels for electrodes. Eg. Fz electrode could eb labelled as- ‘Fz’, ‘FZ’, ‘EEG Fz’, ‘EEG Fz’. In the <code class="docutils literal notranslate"><span class="pre">channels_to_pick</span></code> list, specify these labels in the order from Fp1 to A2.</p></li>
+<li><p>The data is bandpass filtered between 1 Hz and 40 Hz using <code class="docutils literal notranslate"><span class="pre">edfdata.filter</span></code>.</p></li>
+</ul>
+<p><strong>c. Hypnogram Cleanup:</strong></p>
+<ul class="simple">
+<li><p>Read the hypnogram annotations using MNE and convert them to a DataFrame for easier manipulation using <code class="docutils literal notranslate"><span class="pre">mne.read_annotations</span></code> and `` to_data_frame``.</p></li>
+<li><p>The onset column is converted into epoch numbers, representing the start of each epoch in the hypnogram (<code class="docutils literal notranslate"><span class="pre">timestamps,</span> <span class="pre">only_time,</span> <span class="pre">and</span> <span class="pre">epochs_start</span></code>).</p></li>
+<li><p>The description column is modified to contain only the sleep stage labels (<code class="docutils literal notranslate"><span class="pre">just_labels</span></code>).</p></li>
+<li><p>Clean hypnogram is created by repeating each sleep stage label for the duration of the corresponding epoch (<code class="docutils literal notranslate"><span class="pre">hypno_30s</span></code>) for each PSG file. The labels for each PSG file are added to <code class="docutils literal notranslate"><span class="pre">hypno_30s_all</span></code> in the form of a nested list.</p></li>
+</ul>
+<p><strong>d. Power Spectra Computation:</strong></p>
+<ul class="simple">
+<li><p>The data is cut into 30-second epochs using <code class="docutils literal notranslate"><span class="pre">yasa.sliding_window</span></code>.</p></li>
+<li><p>Ensure that data and hypnogram have the same shape.</p></li>
+<li><p>The PSD is computed using Welch’s method (<code class="docutils literal notranslate"><span class="pre">welch</span></code>) for each 30-second epoch for every PSG file.</p></li>
+<li><p>Frequency range is sliced from 0 Hz to 40 Hz for analysis.</p></li>
+<li><p>The resulting PSDs (for each PSG file) are iteratively stored in the <code class="docutils literal notranslate"><span class="pre">psd_all</span></code> as nested list .</p></li>
+</ul>
+<p>By the end of this code block, we will have sleepstage labels and PSDs for each epoch corresponding to individual PSG files (<cite>hypno_30s_all`</cite>, <code class="docutils literal notranslate"><span class="pre">psd_all</span></code>) both stored as nested lists.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%%  Load the data | Get the 19 channels required + A1 and A2 | Block 2</span>
+
+<span class="c1"># initialize empty lists to store sleepstage labels ad psds for all PSG files</span>
+<span class="n">hypno_30s_all</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">psd_all</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">PSGfiles</span><span class="p">,</span> <span class="n">scored_files</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">psg_files_all</span><span class="p">,</span> <span class="n">scored_files_all</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">hypno_30s</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># read psgfile</span>
+    <span class="n">edfdata</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_raw_edf</span><span class="p">(</span><span class="n">PSGfiles</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">srate</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">edfdata</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Get the 19 channels required + A1 and A2</span>
+    <span class="n">channels_to_pick</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fp1&#39;</span><span class="p">,</span> <span class="s1">&#39;FP1&#39;</span><span class="p">,</span> <span class="s1">&#39;Fp2&#39;</span><span class="p">,</span> <span class="s1">&#39;FP2&#39;</span><span class="p">,</span> <span class="s1">&#39;F3&#39;</span><span class="p">,</span> <span class="s1">&#39;F4&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="s1">&#39;C4&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;P3&#39;</span><span class="p">,</span> <span class="s1">&#39;P4&#39;</span><span class="p">,</span> <span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">,</span><span class="s1">&#39;F7&#39;</span><span class="p">,</span> <span class="s1">&#39;F8&#39;</span><span class="p">,</span> <span class="s1">&#39;T3&#39;</span><span class="p">,</span> <span class="s1">&#39;T4&#39;</span><span class="p">,</span> <span class="s1">&#39;Fz&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;FZ&#39;</span><span class="p">,</span> <span class="s1">&#39;Cz&#39;</span><span class="p">,</span> <span class="s1">&#39;CZ&#39;</span><span class="p">,</span> <span class="s1">&#39;Pz&#39;</span><span class="p">,</span> <span class="s1">&#39;PZ&#39;</span><span class="p">,</span> <span class="s1">&#39;A1&#39;</span><span class="p">,</span> <span class="s1">&#39;A2&#39;</span><span class="p">]</span>
+
+    <span class="n">edfdata</span><span class="o">.</span><span class="n">pick_channels</span><span class="p">(</span><span class="n">channels_to_pick</span><span class="p">)</span>
+
+    <span class="c1"># bandpass filter data</span>
+    <span class="n">edfdata</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="n">fir_design</span><span class="o">=</span><span class="s1">&#39;firwin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+    <span class="n">edfdata</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="n">fir_design</span><span class="o">=</span><span class="s1">&#39;firwin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">edfdata</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1e6</span> <span class="c1">#coverting volts to microvolts</span>
+
+<span class="c1"># Cleanup the hypnogram data into a sequence of stages every epoch</span>
+    <span class="n">hypnogram</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">read_annotations</span><span class="p">(</span><span class="n">scored_files</span><span class="p">)</span>
+    <span class="n">hypnogram_annot</span> <span class="o">=</span> <span class="n">hypnogram</span><span class="o">.</span><span class="n">to_data_frame</span><span class="p">()</span>
+
+    <span class="c1"># change the duration column into epochs count</span>
+    <span class="n">hypnogram_annot</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">hypnogram_annot</span><span class="o">.</span><span class="n">duration</span><span class="o">/</span><span class="mi">30</span>
+
+    <span class="c1"># convert the onset column to epoch number</span>
+    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">hypnogram_annot</span><span class="o">.</span><span class="n">onset</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y, %H:%M:%S&quot;</span><span class="p">)</span>
+    <span class="n">only_time</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">entries</span> <span class="ow">in</span> <span class="n">timestamps</span><span class="p">:</span>
+        <span class="n">times</span> <span class="o">=</span> <span class="n">entries</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">only_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">times</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">))</span>
+
+    <span class="c1"># converting hour month and seconds as epoch number</span>
+    <span class="n">epochs_start</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">entries</span> <span class="ow">in</span> <span class="n">only_time</span><span class="p">:</span>
+        <span class="n">hh</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">entries</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mi">120</span>
+        <span class="n">mm</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">entries</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="n">ss</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">entries</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span> <span class="mi">30</span>
+
+        <span class="n">epochs_start</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">hh</span><span class="o">+</span><span class="n">mm</span><span class="o">+</span><span class="n">ss</span><span class="p">))</span>
+
+    <span class="c1"># replacing the onset column with start of epoch</span>
+    <span class="n">hypnogram_annot</span><span class="p">[</span><span class="s1">&#39;onset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">epochs_start</span>
+    <span class="n">epochs_start</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">entries</span> <span class="ow">in</span> <span class="n">only_time</span><span class="p">:</span>
+        <span class="n">hh</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">entries</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mi">120</span>
+        <span class="n">mm</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">entries</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="n">ss</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">entries</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span> <span class="mi">30</span>
+
+        <span class="n">epochs_start</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">hh</span><span class="o">+</span><span class="n">mm</span><span class="o">+</span><span class="n">ss</span><span class="p">))</span>
+
+    <span class="c1"># replacing the onset column with start of epoch</span>
+    <span class="n">hypnogram_annot</span><span class="p">[</span><span class="s1">&#39;onset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">epochs_start</span>
+
+    <span class="c1"># keep the description column neat</span>
+    <span class="n">just_labels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">entries</span> <span class="ow">in</span> <span class="n">hypnogram_annot</span><span class="o">.</span><span class="n">description</span><span class="p">:</span>
+        <span class="n">just_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entries</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="c1"># replacing the description column with just_labels</span>
+    <span class="n">hypnogram_annot</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">just_labels</span>
+
+    <span class="c1"># we need only the duration column and description column to recreate hypnogram</span>
+    <span class="c1"># just reapeat duration times the label in description column</span>
+    <span class="c1"># adding labels for every second of sleep data</span>
+    <span class="k">for</span> <span class="n">stages</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hypnogram_annot</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">repetitions</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">hypnogram_annot</span><span class="o">.</span><span class="n">duration</span><span class="p">[</span><span class="n">stages</span><span class="p">])):</span>
+            <span class="n">hypno_30s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hypnogram_annot</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="n">stages</span><span class="p">])</span>
+
+    <span class="c1"># append hypno_30s for each file</span>
+    <span class="n">hypno_30s_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hypno_30s</span><span class="p">)</span>
+
+<span class="c1"># Power Spectra</span>
+
+<span class="c1"># Generate 30 seconds PSDs for all channels</span>
+<span class="c1"># cut data into 30 seconds epochs</span>
+
+    <span class="c1"># cutting data into 30s epochs using sliding_window() function</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">yasa</span><span class="o">.</span><span class="n">sliding_window</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">srate</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+    <span class="c1"># Make sure the hypnogram is also same size as data</span>
+    <span class="c1"># This would imply removing last part of scoring string</span>
+    <span class="n">hypno_30s</span> <span class="o">=</span> <span class="n">hypno_30s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
+
+    <span class="c1"># compute power spectrum</span>
+    <span class="n">win</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">srate</span><span class="p">)</span>  <span class="c1"># Window size is set to 4 seconds</span>
+    <span class="n">freqs</span><span class="p">,</span> <span class="n">psd</span> <span class="o">=</span> <span class="n">welch</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+                    <span class="n">srate</span><span class="p">,</span>
+                    <span class="n">nperseg</span><span class="o">=</span><span class="n">win</span><span class="p">,</span>
+                    <span class="n">noverlap</span><span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">win</span><span class="o">*</span><span class="mf">0.5</span><span class="p">),</span> <span class="c1">#50% overlapping</span>
+                    <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Slicing the frequency ranges from 0 Hz until 40 Hz</span>
+    <span class="n">index_40_hz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">freqs</span> <span class="o">==</span> <span class="mi">40</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">psd</span> <span class="o">=</span> <span class="n">psd</span><span class="p">[:,:,</span> <span class="mi">1</span><span class="p">:</span><span class="n">index_40_hz</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">freqs</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">index_40_hz</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+    <span class="c1"># append psd for each file</span>
+    <span class="n">psd_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psd</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="assigning-psds-to-respective-sleepstages">
+<h3>4. Assigning PSDs to respective sleepstages<a class="headerlink" href="#assigning-psds-to-respective-sleepstages" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The power spectral density (PSD) data is organized based on their corresponding sleep stages for each subject. For each subject, we iterate through their PSD data and match it with the sleep stage labels collected earlier in <code class="docutils literal notranslate"><span class="pre">hypno_30s_all</span></code>.</p></li>
+<li><p>PSD data is organized into 5 sleepstages- W, N1, N2, N3, REM for individual subject file(<code class="docutils literal notranslate"><span class="pre">psd_w</span></code>, <code class="docutils literal notranslate"><span class="pre">psd_n1</span></code>, <code class="docutils literal notranslate"><span class="pre">psd_n2</span></code>, <code class="docutils literal notranslate"><span class="pre">psd_n3</span></code>, <code class="docutils literal notranslate"><span class="pre">psd_rem</span></code>).</p></li>
+<li><p>The arrays, psd_sub_w, psd_sub_n1, psd_sub_n2, psd_sub_n3, and psd_sub_rem, hold the PSD data corresponding to each epoch, channel, and frequency range for all subjects and their respective sleep stages.</p></li>
+<li><p>This organization of data facilitates efficient and structured exploration and interpretation of the results across sleep stages.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% psds correspnding to respective sleepstages | Block 3</span>
+
+<span class="c1"># initialize lists for containing psds for all subjects corresponding to 5 sleep stages</span>
+<span class="n">psd_sub_n1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">psd_sub_n2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">psd_sub_n3</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">psd_sub_rem</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">psd</span><span class="p">,</span><span class="n">hypno_30s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">psd_all</span><span class="p">,</span><span class="n">hypno_30s_all</span><span class="p">):</span>
+
+    <span class="c1"># initialize lists for psd for each subject corresponding to sleep stages</span>
+    <span class="n">psd_w</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">psd_n1</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">psd_n2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">psd_n3</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">psd_rem</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># index by index matching of elements in PSD and hypnos_30 for individual subject file</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">sleepstage</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span><span class="n">hypno_30s</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">sleepstage</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
+            <span class="n">psd_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">sleepstage</span> <span class="o">==</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span>
+            <span class="n">psd_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">sleepstage</span> <span class="o">==</span> <span class="s1">&#39;N1&#39;</span><span class="p">:</span>
+            <span class="n">psd_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">sleepstage</span> <span class="o">==</span> <span class="s1">&#39;N2&#39;</span><span class="p">:</span>
+            <span class="n">psd_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">sleepstage</span> <span class="o">==</span> <span class="s1">&#39;N3&#39;</span><span class="p">:</span>
+            <span class="n">psd_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1"># append stagewise psds for each file</span>
+    <span class="n">psd_sub_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psd_w</span><span class="p">)</span>
+    <span class="n">psd_sub_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psd_n1</span><span class="p">)</span>
+    <span class="n">psd_sub_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psd_n2</span><span class="p">)</span>
+    <span class="n">psd_sub_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psd_n3</span><span class="p">)</span>
+    <span class="n">psd_sub_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psd_rem</span><span class="p">)</span>
+
+<span class="c1"># arrays of psds[[epochs,channels,freqs]] corresponding to each stage for all subjects</span>
+<span class="n">psd_sub_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">psd_w</span><span class="p">)</span> <span class="k">for</span> <span class="n">psd_w</span> <span class="ow">in</span> <span class="n">psd_sub_w</span><span class="p">])</span>
+<span class="n">psd_sub_n1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">psd_n1</span><span class="p">)</span> <span class="k">for</span> <span class="n">psd_n1</span> <span class="ow">in</span> <span class="n">psd_sub_n1</span><span class="p">])</span>
+<span class="n">psd_sub_n2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">psd_n2</span><span class="p">)</span> <span class="k">for</span> <span class="n">psd_n2</span> <span class="ow">in</span> <span class="n">psd_sub_n2</span><span class="p">])</span>
+<span class="n">psd_sub_n3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">psd_n3</span><span class="p">)</span> <span class="k">for</span> <span class="n">psd_n3</span> <span class="ow">in</span> <span class="n">psd_sub_n3</span><span class="p">])</span>
+<span class="n">psd_sub_rem</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">psd_rem</span><span class="p">)</span> <span class="k">for</span> <span class="n">psd_rem</span> <span class="ow">in</span> <span class="n">psd_sub_rem</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="model-fitting-fooof">
+<h3>5. Model Fitting: FOOOF<a class="headerlink" href="#model-fitting-fooof" title="Permalink to this heading">#</a></h3>
+<p>The following blocks use the FOOOF Python library to model and extract the aperiodic and periodic components of the power spectral density (PSD).</p>
+<section id="a-wake-sleepstage">
+<h4>a. Wake sleepstage<a class="headerlink" href="#a-wake-sleepstage" title="Permalink to this heading">#</a></h4>
+<p>This block computes the FOOOF (Fitting Oscillations and One-Over F) model on the data corresponding to the “WAKE” sleep stage.</p>
+<p>This block performs the following steps:</p>
+<ol class="lowerroman simple">
+<li><p>Initialize the FOOOF object(<code class="docutils literal notranslate"><span class="pre">fm</span></code>):</p></li>
+</ol>
+<p>Initialize once for all sleepstages. Specify parameters for aperiodic mode, minimum peak height, and maximum number of peaks.</p>
+<ol class="lowerroman simple" start="2">
+<li><p>Iterate through each PSG file and corresponding PSD data:</p></li>
+</ol>
+<p>Store filename labels (<code class="docutils literal notranslate"><span class="pre">subject_sub_w</span></code>) and FOOOF parameters(<code class="docutils literal notranslate"><span class="pre">aperiodic_params_sub_w</span></code>, <code class="docutils literal notranslate"><span class="pre">periodic_params_sub_w</span></code>) for all subject files. Store additional labels for epoch and channel (<code class="docutils literal notranslate"><span class="pre">epoch_sub_w</span></code>, <code class="docutils literal notranslate"><span class="pre">channel_sub_w</span></code>). These lists are initialized in the beginning of the block.</p>
+<blockquote>
+<div><p>Note: A single set of parameters is stored for each channel of individual epochs corresponding to PSD data for each subject file. Set of parameters to be stored: Aperiodic components- <em>Exponent, Offset, R^2, Error</em> and Periodic Components- <em>no of peaks picked, peak parameters</em></p>
+</div></blockquote>
+<ol class="lowerroman simple" start="3">
+<li><p>Fit the FOOOF model(<code class="docutils literal notranslate"><span class="pre">fm.fit()</span></code>) to the PSD data and retrieve the results(<code class="docutils literal notranslate"><span class="pre">res_w</span></code>) for each epoch and channel of a single subject’s PSD data.</p></li>
+<li><p>Store parameters:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Store epoch (<code class="docutils literal notranslate"><span class="pre">epoch_w</span></code>), channel (<code class="docutils literal notranslate"><span class="pre">channel_w</span></code>) and filename labels (<code class="docutils literal notranslate"><span class="pre">subject_w</span></code>) for each epoch and channel.</p></li>
+<li><p>Separately store the aperiodic and periodic parameters for each epoch and channel from <code class="docutils literal notranslate"><span class="pre">res_w</span></code>.</p></li>
+<li><p>These will be iteratively stored in nested list structure to (<code class="docutils literal notranslate"><span class="pre">aperiodic_params_sub_w</span></code>, <code class="docutils literal notranslate"><span class="pre">periodic_params_sub_w</span></code>)</p></li>
+</ul>
+<blockquote>
+<div><p>Note: We encountered epochs where peaks could not be picked. Periodic parameters are not retrieved from the model fit for such epochs. Guassian cannot be fitted for such epochs and the code throws an error. For such cases, n/a values should be assigned to periodic parameters to maintain uniformity of data.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Additionally, maximum no of peaks(<code class="docutils literal notranslate"><span class="pre">max_n_peaks</span></code>) to be picked have been set to a limit of 10. However, no. of peaks picked from the model fit in each epoch may vary. For maintaining uniformity, the rest of the peak parameters are assigned with n/a values.</p></li>
+</ul>
+<ol class="loweralpha simple" start="22">
+<li><p>Organize the parameters into separate DataFrames, one for aperiodic parameters and the other for periodic parameters.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Insert labels for each set of parameters to these dataframes</p></li>
+<li><p>Note that peak labels need to be added to periodic parameters, a single label for 3 adjacent columns(representing center frequency, peak power and bandwidth)</p></li>
+</ul>
+<ol class="lowerroman simple" start="6">
+<li><p>Concatenate the DataFrames and compiles the data into a single DataFrame for the “WAKE” sleep stage. Insert an additional sleepstage label as well.</p></li>
+</ol>
+<blockquote>
+<div><p>Note: The labels explicitely assigned to each set of parameters makes it easy to trace the parameters back to their origin.</p>
+</div></blockquote>
+<ol class="lowerroman simple" start="7">
+<li><p>Save the final DataFrame to a CSV file for further analysis and interpretation.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% FOOOF | Block 4</span>
+
+<span class="c1"># by the end of this loop i should have -</span>
+<span class="c1"># complete data with &#39;none&#39; values for non detectable guassians</span>
+<span class="c1"># separted periodic and aperiodic parameters compiled in dfs</span>
+<span class="c1"># a single dataframe for sleepstage parameters</span>
+
+<span class="c1"># initializing fooof</span>
+<span class="n">fm</span> <span class="o">=</span> <span class="n">FOOOF</span><span class="p">(</span><span class="n">aperiodic_mode</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">min_peak_height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">max_n_peaks</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># WAKE SLEEPSTAGE</span>
+
+<span class="c1"># Initialize empty lists to store data</span>
+<span class="n">epoch_sub_w</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">channel_sub_w</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">aperiodic_params_sub_w</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">periodic_params_sub_w</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">subject_sub_w</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Outer loop</span>
+<span class="k">for</span> <span class="n">psd_w</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">psd_sub_w</span><span class="p">,</span> <span class="n">psg_files</span><span class="p">):</span>
+
+    <span class="c1"># initializing empty lists for storing parameters</span>
+    <span class="n">epoch_w</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">channel_w</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">aperiodic_params_w</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">periodic_params_w</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">subject_w</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Inner loop</span>
+    <span class="c1"># looping over epochs and channel,outcome- epoch x channel no of data entries</span>
+    <span class="c1"># for each subject psd</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">psd_w</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">psd_w</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+
+            <span class="n">temp_periodic</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># stores periodic params temporarily</span>
+
+            <span class="c1"># fitting spectra</span>
+            <span class="n">fm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">psd_w</span><span class="p">[</span><span class="n">epoch</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="p">:])</span>
+
+            <span class="c1"># get results</span>
+            <span class="n">res_w</span> <span class="o">=</span> <span class="n">fm</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+
+            <span class="c1"># Labels</span>
+            <span class="c1"># updating epoch x channel vals, filename</span>
+            <span class="n">epoch_w</span><span class="o">.</span><span class="n">append</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;w_Epoch_</span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">channel_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel_</span><span class="si">{</span><span class="n">channel</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">subject_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+            <span class="c1"># Aperiodic Component</span>
+            <span class="c1"># append aperiodic vals to a list</span>
+            <span class="n">aperiodic_params_w</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">res_w</span><span class="o">.</span><span class="n">aperiodic_params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                              <span class="n">res_w</span><span class="o">.</span><span class="n">aperiodic_params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                              <span class="n">res_w</span><span class="o">.</span><span class="n">r_squared</span><span class="p">,</span>
+                              <span class="n">res_w</span><span class="o">.</span><span class="n">error</span><span class="p">])</span>
+
+            <span class="c1"># Periodic Component</span>
+            <span class="c1"># editing out data for which peaks can&#39;t be picked</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res_w</span><span class="o">.</span><span class="n">gaussian_params</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+                <span class="c1"># n/a vals for periodic params in this case</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                        <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+                <span class="n">periodic_params_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_periodic</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="c1"># accessing the nested lists within peak_params list gives the no of peaks detected</span>
+                <span class="n">no_of_peaks</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">res_w</span><span class="o">.</span><span class="n">peak_params</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+                <span class="c1"># appending peak vals and n/a vals to fill for empty peak vals</span>
+                <span class="k">for</span> <span class="n">peak</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_of_peaks</span><span class="p">):</span>
+                    <span class="n">peak_pack</span> <span class="o">=</span> <span class="n">res_w</span><span class="o">.</span><span class="n">peak_params</span><span class="p">[</span><span class="n">peak</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">peak_pack</span><span class="p">:</span>
+                        <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+                <span class="c1"># using throw away variale &#39;_&#39; for appending n/a vals, here max peaks=10</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_of_peaks</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                        <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+                <span class="n">periodic_params_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_periodic</span><span class="p">)</span>
+
+    <span class="c1"># append master lists for each subject psd</span>
+    <span class="n">epoch_sub_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch_w</span><span class="p">)</span>
+    <span class="n">channel_sub_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel_w</span><span class="p">)</span>
+    <span class="n">aperiodic_params_sub_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aperiodic_params_w</span><span class="p">)</span>
+    <span class="n">periodic_params_sub_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">periodic_params_w</span><span class="p">)</span>
+    <span class="n">subject_sub_w</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subject_w</span><span class="p">)</span>
+
+<span class="c1"># Dataframes</span>
+
+<span class="c1"># make df of periodic_params and add peak labels</span>
+<span class="c1"># Specify peak labels</span>
+<span class="n">peak_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;peak1&#39;</span><span class="p">,</span> <span class="s1">&#39;peak2&#39;</span><span class="p">,</span> <span class="s1">&#39;peak3&#39;</span><span class="p">,</span> <span class="s1">&#39;peak4&#39;</span><span class="p">,</span> <span class="s1">&#39;peak5&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;peak6&#39;</span><span class="p">,</span> <span class="s1">&#39;peak7&#39;</span><span class="p">,</span> <span class="s1">&#39;peak8&#39;</span><span class="p">,</span> <span class="s1">&#39;peak9&#39;</span><span class="p">,</span> <span class="s1">&#39;peak10&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">periodic_params_sub_w</span><span class="p">)):</span>
+    <span class="n">periodic_params_w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">periodic_params_sub_w</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># Add peak labels</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">peak_labels</span><span class="p">)):</span>
+        <span class="n">peak_no</span> <span class="o">=</span> <span class="n">periodic_params_w</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="n">heading</span> <span class="o">=</span> <span class="n">peak_labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">periodic_params_w</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">heading</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">peak_no</span><span class="p">},</span>
+                            <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Insert labels</span>
+    <span class="n">periodic_params_w</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">subject_sub_w</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">periodic_params_w</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">epoch_sub_w</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">periodic_params_w</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">channel_sub_w</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="n">periodic_params_sub_w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">periodic_params_w</span>
+
+ <span class="c1"># make a df of aperiodic_params and add parameter labels</span>
+ <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aperiodic_params_sub_w</span><span class="p">)):</span>
+    <span class="n">aperiodic_params_w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">aperiodic_params_sub_w</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">aperiodic_params_w</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Exponent&#39;</span><span class="p">,</span> <span class="s1">&#39;Offset&#39;</span><span class="p">,</span> <span class="s1">&#39;R^2&#39;</span><span class="p">,</span> <span class="s1">&#39;Error&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Insert labels</span>
+    <span class="n">aperiodic_params_w</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">subject_sub_w</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">aperiodic_params_w</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">epoch_sub_w</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">aperiodic_params_w</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">channel_sub_w</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="n">aperiodic_params_sub_w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">aperiodic_params_w</span>
+
+<span class="c1"># Concatenate the DataFrames within aperiodic_params_sub_w and periodic_params_sub_w</span>
+<span class="n">aperiodic_params_sub_w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">aperiodic_params_sub_w</span><span class="p">)</span>
+<span class="n">periodic_params_sub_w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">periodic_params_sub_w</span><span class="p">)</span>
+
+<span class="c1"># compiling data into a single wake dataframe</span>
+<span class="n">report_w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">aperiodic_params_sub_w</span><span class="p">,</span> <span class="n">periodic_params_sub_w</span><span class="p">,</span>
+               <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">])</span>
+<span class="c1">#Insert sleepstage label</span>
+<span class="n">report_w</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Stage&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">)</span>
+
+<span class="c1">#saving to csv file</span>
+<span class="n">report_w</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/CSV/nk_fooof_wake.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>The same code structure has been followed for N1, N2, N3 and REM sleepstage with their respective variables and labels</strong></p>
+</section>
+<section id="b-n1-sleepstage">
+<h4>b. N1 Sleepstage<a class="headerlink" href="#b-n1-sleepstage" title="Permalink to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% N1 STAGE | Block 5</span>
+
+<span class="c1"># Initialize empty lists to store data</span>
+<span class="n">epoch_sub_n1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">channel_sub_n1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">aperiodic_params_sub_n1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">periodic_params_sub_n1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">subject_sub_n1</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Outer loop</span>
+<span class="k">for</span> <span class="n">psd_n1</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">psd_sub_n1</span><span class="p">,</span> <span class="n">psg_files</span><span class="p">):</span>
+
+    <span class="c1"># initializing empty lists for storing parameters</span>
+    <span class="n">epoch_n1</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">channel_n1</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">aperiodic_params_n1</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">periodic_params_n1</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">subject_n1</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Inner loops</span>
+    <span class="c1"># looping over epochs and channel for each subject psd</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">psd_n1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">psd_n1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+
+            <span class="n">temp_periodic</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># stores periodic params temporarily</span>
+
+            <span class="c1"># fitting spectra</span>
+            <span class="n">fm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">psd_n1</span><span class="p">[</span><span class="n">epoch</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="p">:])</span>
+
+            <span class="c1"># get results</span>
+            <span class="n">res_n1</span> <span class="o">=</span> <span class="n">fm</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+
+            <span class="c1">#Labels</span>
+            <span class="c1"># updating epoch x channel vals, filename</span>
+            <span class="n">epoch_n1</span><span class="o">.</span><span class="n">append</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n1_Epoch_</span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">channel_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel_</span><span class="si">{</span><span class="n">channel</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">subject_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+            <span class="c1"># Aperiodic Component</span>
+            <span class="c1"># append aperiodic vals to a list</span>
+            <span class="n">aperiodic_params_n1</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">res_n1</span><span class="o">.</span><span class="n">aperiodic_params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                              <span class="n">res_n1</span><span class="o">.</span><span class="n">aperiodic_params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                              <span class="n">res_n1</span><span class="o">.</span><span class="n">r_squared</span><span class="p">,</span>
+                              <span class="n">res_n1</span><span class="o">.</span><span class="n">error</span><span class="p">])</span>
+
+            <span class="c1"># Periodic Component</span>
+            <span class="c1"># editing out data for which peaks can&#39;t be picked</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res_n1</span><span class="o">.</span><span class="n">gaussian_params</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+                <span class="c1"># n/a vals for periodic params in this case</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                        <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+                <span class="n">periodic_params_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_periodic</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="c1"># accessing the nested lists within peak_params list gives the no of peaks detected</span>
+                <span class="n">no_of_peaks</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">res_n1</span><span class="o">.</span><span class="n">peak_params</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+                <span class="c1"># appending peak vals and n/a vals to fill for empty peak vals</span>
+                <span class="k">for</span> <span class="n">peak</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_of_peaks</span><span class="p">):</span>
+                    <span class="n">peak_pack</span> <span class="o">=</span> <span class="n">res_n1</span><span class="o">.</span><span class="n">peak_params</span><span class="p">[</span><span class="n">peak</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">peak_pack</span><span class="p">:</span>
+                        <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+                <span class="c1"># using throw away variale &#39;_&#39; for appending n/a vals, here max peaks=10</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_of_peaks</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                        <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+                <span class="n">periodic_params_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_periodic</span><span class="p">)</span>
+
+    <span class="c1"># append master lists for each subject psd</span>
+    <span class="n">epoch_sub_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch_n1</span><span class="p">)</span>
+    <span class="n">channel_sub_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel_n1</span><span class="p">)</span>
+    <span class="n">aperiodic_params_sub_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aperiodic_params_n1</span><span class="p">)</span>
+    <span class="n">periodic_params_sub_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">periodic_params_n1</span><span class="p">)</span>
+    <span class="n">subject_sub_n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subject_n1</span><span class="p">)</span>
+
+<span class="c1"># Dataframes</span>
+
+<span class="c1"># make df of periodic_params and add peak labels</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">periodic_params_sub_n1</span><span class="p">)):</span>
+    <span class="n">periodic_params_n1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">periodic_params_sub_n1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># Add peak labels</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">peak_labels</span><span class="p">)):</span>
+        <span class="n">peak_no</span> <span class="o">=</span> <span class="n">periodic_params_n1</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="n">heading</span> <span class="o">=</span> <span class="n">peak_labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">periodic_params_n1</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">heading</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">peak_no</span><span class="p">},</span>
+                            <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1">#Insert labels</span>
+    <span class="n">periodic_params_n1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">subject_sub_n1</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">periodic_params_n1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">epoch_sub_n1</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">periodic_params_n1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">channel_sub_n1</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="n">periodic_params_sub_n1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">periodic_params_n1</span>
+
+<span class="c1"># make a df of aperiodic_params and add parameter labels</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aperiodic_params_sub_n1</span><span class="p">)):</span>
+    <span class="n">aperiodic_params_n1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">aperiodic_params_sub_n1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">aperiodic_params_n1</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Exponent&#39;</span><span class="p">,</span> <span class="s1">&#39;Offset&#39;</span><span class="p">,</span> <span class="s1">&#39;R^2&#39;</span><span class="p">,</span> <span class="s1">&#39;Error&#39;</span><span class="p">]</span>
+
+    <span class="c1">#Insert labels</span>
+    <span class="n">aperiodic_params_n1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">subject_sub_n1</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">aperiodic_params_n1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">epoch_sub_n1</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">aperiodic_params_n1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">channel_sub_n1</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="n">aperiodic_params_sub_n1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">aperiodic_params_n1</span>
+
+<span class="c1"># Concatenate the DataFrames within aperiodic_params_sub_w and periodic_params_sub_w</span>
+<span class="n">aperiodic_params_sub_n1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">aperiodic_params_sub_n1</span><span class="p">)</span>
+<span class="n">periodic_params_sub_n1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">periodic_params_sub_n1</span><span class="p">)</span>
+
+<span class="c1"># compiling data into a single wake dataframe</span>
+<span class="n">report_n1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">aperiodic_params_sub_n1</span><span class="p">,</span> <span class="n">periodic_params_sub_n1</span><span class="p">,</span>
+                <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">])</span>
+<span class="c1">#Insert sleepstage label</span>
+<span class="n">report_n1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Stage&#39;</span><span class="p">,</span> <span class="s1">&#39;N1&#39;</span><span class="p">)</span>
+
+<span class="c1">#saving to csv file</span>
+<span class="n">report_n1</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/CSV/nk_fooof_n1.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="c-n2-sleepstage">
+<h4>c. N2 Sleepstage<a class="headerlink" href="#c-n2-sleepstage" title="Permalink to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% N2 STAGE | Block 6</span>
+
+<span class="c1"># Initialize empty lists to store data</span>
+<span class="n">epoch_sub_n2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">channel_sub_n2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">aperiodic_params_sub_n2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">periodic_params_sub_n2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">subject_sub_n2</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Outer loop</span>
+<span class="k">for</span> <span class="n">psd_n2</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">psd_sub_n2</span><span class="p">,</span> <span class="n">psg_files</span><span class="p">):</span>
+
+    <span class="c1"># initializing empty lists for storing parameters</span>
+    <span class="n">epoch_n2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">channel_n2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">aperiodic_params_n2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">periodic_params_n2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">subject_n2</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Inner loops</span>
+    <span class="c1"># looping over epochs and channel for each subject psd</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">psd_n2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">psd_n2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+
+            <span class="n">temp_periodic</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># stores periodic params temporarily</span>
+
+            <span class="c1"># fitting spectra</span>
+            <span class="n">fm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">psd_n2</span><span class="p">[</span><span class="n">epoch</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="p">:])</span>
+
+            <span class="c1"># get results</span>
+            <span class="n">res_n2</span> <span class="o">=</span> <span class="n">fm</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+
+            <span class="c1"># Labels</span>
+            <span class="c1"># updating epoch x channel vals, filename</span>
+            <span class="n">epoch_n2</span><span class="o">.</span><span class="n">append</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n2_Epoch_</span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">channel_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel_</span><span class="si">{</span><span class="n">channel</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">subject_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+            <span class="c1"># Aperiodic Component</span>
+            <span class="c1"># append aperiodic vals to a list</span>
+            <span class="n">aperiodic_params_n2</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">res_n2</span><span class="o">.</span><span class="n">aperiodic_params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                     <span class="n">res_n2</span><span class="o">.</span><span class="n">aperiodic_params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                     <span class="n">res_n2</span><span class="o">.</span><span class="n">r_squared</span><span class="p">,</span>
+                                     <span class="n">res_n2</span><span class="o">.</span><span class="n">error</span><span class="p">])</span>
+
+            <span class="c1"># Periodic Component</span>
+            <span class="c1"># editing out data for which peaks can&#39;t be picked</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res_n2</span><span class="o">.</span><span class="n">gaussian_params</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+                <span class="c1"># n/a vals for periodic params in this case</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                        <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+                <span class="n">periodic_params_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_periodic</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="c1"># accessing the nested lists within peak_params list gives the no of peaks detected</span>
+                <span class="n">no_of_peaks</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">res_n2</span><span class="o">.</span><span class="n">peak_params</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+                <span class="c1"># appending peak vals and n/a vals to fill for empty peak vals</span>
+                <span class="k">for</span> <span class="n">peak</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_of_peaks</span><span class="p">):</span>
+                    <span class="n">peak_pack</span> <span class="o">=</span> <span class="n">res_n2</span><span class="o">.</span><span class="n">peak_params</span><span class="p">[</span><span class="n">peak</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">peak_pack</span><span class="p">:</span>
+                        <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+                <span class="c1"># using throw away variale &#39;_&#39; for appending n/a vals, here max peaks=10</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_of_peaks</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                        <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+                <span class="n">periodic_params_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_periodic</span><span class="p">)</span>
+
+   <span class="c1"># append master lists for each subject psd</span>
+    <span class="n">epoch_sub_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch_n2</span><span class="p">)</span>
+    <span class="n">channel_sub_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel_n2</span><span class="p">)</span>
+    <span class="n">aperiodic_params_sub_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aperiodic_params_n2</span><span class="p">)</span>
+    <span class="n">periodic_params_sub_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">periodic_params_n2</span><span class="p">)</span>
+    <span class="n">subject_sub_n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subject_n2</span><span class="p">)</span>
+
+<span class="c1"># Dataframes</span>
+
+<span class="c1"># make df of periodic_params and add peak labels</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">periodic_params_sub_n2</span><span class="p">)):</span>
+    <span class="n">periodic_params_n2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">periodic_params_sub_n2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># Add peak labels</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">peak_labels</span><span class="p">)):</span>
+        <span class="n">peak_no</span> <span class="o">=</span> <span class="n">periodic_params_n2</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="n">heading</span> <span class="o">=</span> <span class="n">peak_labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">periodic_params_n2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">heading</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">peak_no</span><span class="p">},</span>
+                            <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Insert labels</span>
+    <span class="n">periodic_params_n2</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">subject_sub_n2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">periodic_params_n2</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">epoch_sub_n2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">periodic_params_n2</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">channel_sub_n2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="n">periodic_params_sub_n2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">periodic_params_n2</span>
+
+
+<span class="c1"># make a df of aperiodic_params and add parameter labels</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aperiodic_params_sub_n2</span><span class="p">)):</span>
+    <span class="n">aperiodic_params_n2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">aperiodic_params_sub_n2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">aperiodic_params_n2</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Exponent&#39;</span><span class="p">,</span> <span class="s1">&#39;Offset&#39;</span><span class="p">,</span> <span class="s1">&#39;R^2&#39;</span><span class="p">,</span> <span class="s1">&#39;Error&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Insert labels</span>
+    <span class="n">aperiodic_params_n2</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">subject_sub_n2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">aperiodic_params_n2</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">epoch_sub_n2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">aperiodic_params_n2</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">channel_sub_n2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="n">aperiodic_params_sub_n2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">aperiodic_params_n2</span>
+
+<span class="c1"># Concatenate the DataFrames within aperiodic_params_sub_w and periodic_params_sub_w</span>
+<span class="n">aperiodic_params_sub_n2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">aperiodic_params_sub_n2</span><span class="p">)</span>
+<span class="n">periodic_params_sub_n2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">periodic_params_sub_n2</span><span class="p">)</span>
+
+<span class="c1"># compiling data into a single wake dataframe</span>
+<span class="n">report_n2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">aperiodic_params_sub_n2</span><span class="p">,</span> <span class="n">periodic_params_sub_n2</span><span class="p">,</span>
+                <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">])</span>
+<span class="c1"># Insert slepstage label</span>
+<span class="n">report_n2</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Stage&#39;</span><span class="p">,</span> <span class="s1">&#39;N2&#39;</span><span class="p">)</span>
+
+<span class="c1">#saving to csv file</span>
+<span class="n">report_n2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/CSV/nk_fooof_n2.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="d-n3-sleepstage">
+<h4>d. N3 Sleepstage<a class="headerlink" href="#d-n3-sleepstage" title="Permalink to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% N3 STAGE | Block 7</span>
+
+<span class="c1"># Initialize empty lists to store data</span>
+<span class="n">epoch_sub_n3</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">channel_sub_n3</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">aperiodic_params_sub_n3</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">periodic_params_sub_n3</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">subject_sub_n3</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Outer loop</span>
+<span class="k">for</span> <span class="n">psd_n3</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">psd_sub_n3</span><span class="p">,</span> <span class="n">psg_files</span><span class="p">):</span>
+
+         <span class="c1"># initializing empty lists for storing parameters</span>
+         <span class="n">epoch_n3</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">channel_n3</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">aperiodic_params_n3</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">periodic_params_n3</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">subject_n3</span> <span class="o">=</span> <span class="p">[]</span>
+
+         <span class="c1"># Inner loops</span>
+         <span class="c1"># looping over epochs and channel for each subject psd</span>
+         <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">psd_n3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                  <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">psd_n3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+
+                                <span class="n">temp_periodic</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># stores periodic params temporarily</span>
+
+                                <span class="c1"># fitting spectra</span>
+                                <span class="n">fm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">psd_n3</span><span class="p">[</span><span class="n">epoch</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="p">:])</span>
+
+                                <span class="c1"># get results</span>
+                                <span class="n">res_n3</span> <span class="o">=</span> <span class="n">fm</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+
+                                <span class="c1"># Labels</span>
+                                <span class="c1"># updating epoch x channel vals, filename</span>
+                                <span class="n">epoch_n3</span><span class="o">.</span><span class="n">append</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n3_Epoch_</span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                                <span class="n">channel_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel_</span><span class="si">{</span><span class="n">channel</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                                <span class="n">subject_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+                                <span class="c1"># Aperiodic Component</span>
+                                <span class="c1"># append aperiodic vals to a list</span>
+                                <span class="n">aperiodic_params_n3</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">res_n3</span><span class="o">.</span><span class="n">aperiodic_params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                                <span class="n">res_n3</span><span class="o">.</span><span class="n">aperiodic_params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                                <span class="n">res_n3</span><span class="o">.</span><span class="n">r_squared</span><span class="p">,</span>
+                                                                <span class="n">res_n3</span><span class="o">.</span><span class="n">error</span><span class="p">])</span>
+
+                                <span class="c1"># Periodic Component</span>
+                                <span class="c1"># editing out data for which peaks can&#39;t be picked</span>
+                                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res_n3</span><span class="o">.</span><span class="n">gaussian_params</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+                                         <span class="c1"># n/a vals for periodic params in this case</span>
+                                         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                                                  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                                                                <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+                                         <span class="n">periodic_params_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_periodic</span><span class="p">)</span>
+
+                                <span class="k">else</span><span class="p">:</span>
+
+                                         <span class="c1"># accessing the nested lists within peak_params list gives the no of peaks detected</span>
+                                         <span class="n">no_of_peaks</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">res_n3</span><span class="o">.</span><span class="n">peak_params</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+                                         <span class="c1"># appending peak vals and n/a vals to fill for empty peak vals</span>
+                                         <span class="k">for</span> <span class="n">peak</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_of_peaks</span><span class="p">):</span>
+                                                  <span class="n">peak_pack</span> <span class="o">=</span> <span class="n">res_n3</span><span class="o">.</span><span class="n">peak_params</span><span class="p">[</span><span class="n">peak</span><span class="p">]</span>
+                                                  <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">peak_pack</span><span class="p">:</span>
+                                                                <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+                                         <span class="c1"># using throw away variale &#39;_&#39; for appending n/a vals, here max peaks=10</span>
+                                         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_of_peaks</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                                                  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                                                                <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+                                         <span class="n">periodic_params_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_periodic</span><span class="p">)</span>
+
+         <span class="c1"># append master lists for each subject psd</span>
+         <span class="n">epoch_sub_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch_n3</span><span class="p">)</span>
+         <span class="n">channel_sub_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel_n3</span><span class="p">)</span>
+         <span class="n">aperiodic_params_sub_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aperiodic_params_n3</span><span class="p">)</span>
+         <span class="n">periodic_params_sub_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">periodic_params_n3</span><span class="p">)</span>
+         <span class="n">subject_sub_n3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subject_n3</span><span class="p">)</span>
+
+<span class="c1"># Dataframes</span>
+
+<span class="c1"># make df of periodic_params and add peak labels</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">periodic_params_sub_n3</span><span class="p">)):</span>
+
+         <span class="n">periodic_params_n3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">periodic_params_sub_n3</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># Add peak labels</span>
+         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">peak_labels</span><span class="p">)):</span>
+                  <span class="n">peak_no</span> <span class="o">=</span> <span class="n">periodic_params_n3</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]</span>
+                  <span class="n">heading</span> <span class="o">=</span> <span class="n">peak_labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                  <span class="n">periodic_params_n3</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">heading</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">peak_no</span><span class="p">},</span>
+                                            <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+         <span class="c1"># Insert labels</span>
+         <span class="n">periodic_params_n3</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">subject_sub_n3</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+         <span class="n">periodic_params_n3</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">epoch_sub_n3</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+         <span class="n">periodic_params_n3</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">channel_sub_n3</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+         <span class="n">periodic_params_sub_n3</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">periodic_params_n3</span>
+
+<span class="c1"># make a df of aperiodic_params and add parameter labels</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aperiodic_params_sub_n3</span><span class="p">)):</span>
+
+         <span class="n">aperiodic_params_n3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">aperiodic_params_sub_n3</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+         <span class="n">aperiodic_params_n3</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Exponent&#39;</span><span class="p">,</span> <span class="s1">&#39;Offset&#39;</span><span class="p">,</span> <span class="s1">&#39;R^2&#39;</span><span class="p">,</span> <span class="s1">&#39;Error&#39;</span><span class="p">]</span>
+
+         <span class="c1"># Insert labels</span>
+         <span class="n">aperiodic_params_n3</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">subject_sub_n3</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+         <span class="n">aperiodic_params_n3</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">epoch_sub_n3</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+         <span class="n">aperiodic_params_n3</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">channel_sub_n3</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+         <span class="n">aperiodic_params_sub_n3</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">aperiodic_params_n3</span>
+
+<span class="c1"># Concatenate the DataFrames within aperiodic_params_sub_w and periodic_params_sub_w</span>
+<span class="n">aperiodic_params_sub_n3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">aperiodic_params_sub_n3</span><span class="p">)</span>
+<span class="n">periodic_params_sub_n3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">periodic_params_sub_n3</span><span class="p">)</span>
+
+<span class="c1"># compiling data into a single wake dataframe</span>
+<span class="n">report_n3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">aperiodic_params_sub_n3</span><span class="p">,</span> <span class="n">periodic_params_sub_n3</span><span class="p">,</span>
+            <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">])</span>
+<span class="c1"># Insert sleepstage labels</span>
+<span class="n">report_n3</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Stage&#39;</span><span class="p">,</span> <span class="s1">&#39;N3&#39;</span><span class="p">)</span>
+
+<span class="c1">#saving to csv file</span>
+<span class="n">report_n3</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/CSV/nk_fooof_n3.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="e-rem-sleepstage">
+<h4>e. REM Sleepstage<a class="headerlink" href="#e-rem-sleepstage" title="Permalink to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% REM STAGE | Block 8</span>
+
+<span class="c1"># Initialize empty lists to store data</span>
+<span class="n">epoch_sub_rem</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">channel_sub_rem</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">aperiodic_params_sub_rem</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">periodic_params_sub_rem</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">subject_sub_rem</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Outer loop</span>
+<span class="k">for</span> <span class="n">psd_rem</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">psd_sub_rem</span><span class="p">,</span> <span class="n">psg_files</span><span class="p">):</span>
+
+         <span class="c1"># initializing empty lists for storing parameters</span>
+         <span class="n">epoch_rem</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">channel_rem</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">aperiodic_params_rem</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">periodic_params_rem</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">subject_rem</span> <span class="o">=</span> <span class="p">[]</span>
+
+         <span class="c1"># Inner loops</span>
+         <span class="c1"># looping over epochs and channel,outcome- epoch x channel no of data entries</span>
+         <span class="c1"># for each subject psd</span>
+         <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">psd_rem</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                  <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">psd_rem</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+
+                                <span class="n">temp_periodic</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># stores periodic params temporarily</span>
+
+                                <span class="c1"># fitting spectra</span>
+                                <span class="n">fm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">psd_rem</span><span class="p">[</span><span class="n">epoch</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="p">:])</span>
+
+                                <span class="c1"># get results</span>
+                                <span class="n">res_rem</span> <span class="o">=</span> <span class="n">fm</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+
+                                <span class="c1"># Labels</span>
+                                <span class="c1"># updating epoch x channel vals, filename</span>
+                                <span class="n">epoch_rem</span><span class="o">.</span><span class="n">append</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rem_Epoch_</span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                                <span class="n">channel_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel_</span><span class="si">{</span><span class="n">channel</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                                <span class="n">subject_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+                                <span class="c1"># Aperiodic Component</span>
+                                <span class="c1"># append aperiodic vals to a list</span>
+                                <span class="n">aperiodic_params_rem</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">res_rem</span><span class="o">.</span><span class="n">aperiodic_params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                                <span class="n">res_rem</span><span class="o">.</span><span class="n">aperiodic_params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                                <span class="n">res_rem</span><span class="o">.</span><span class="n">r_squared</span><span class="p">,</span>
+                                                                <span class="n">res_rem</span><span class="o">.</span><span class="n">error</span><span class="p">])</span>
+
+                                <span class="c1"># Periodic Component</span>
+                                <span class="c1"># editing out data for which peaks can&#39;t be picked</span>
+                                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res_rem</span><span class="o">.</span><span class="n">gaussian_params</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+                                         <span class="c1"># n/a vals for periodic params in this case</span>
+                                         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                                                  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                                                                <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+                                         <span class="n">periodic_params_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_periodic</span><span class="p">)</span>
+
+                                <span class="k">else</span><span class="p">:</span>
+
+                                         <span class="c1"># accessing the nested lists within peak_params list gives the no of peaks detected</span>
+                                         <span class="n">no_of_peaks</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">res_rem</span><span class="o">.</span><span class="n">peak_params</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+                                         <span class="c1"># appending peak vals and n/a vals to fill for empty peak vals</span>
+                                         <span class="k">for</span> <span class="n">peak</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_of_peaks</span><span class="p">):</span>
+                                                  <span class="n">peak_pack</span> <span class="o">=</span> <span class="n">res_rem</span><span class="o">.</span><span class="n">peak_params</span><span class="p">[</span><span class="n">peak</span><span class="p">]</span>
+                                                  <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">peak_pack</span><span class="p">:</span>
+                                                                <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+                                         <span class="c1"># using throw away variale &#39;_&#39; for appending n/a vals, here max peaks=10</span>
+                                         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_of_peaks</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                                                  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                                                                <span class="n">temp_periodic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+                                         <span class="n">periodic_params_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_periodic</span><span class="p">)</span>
+
+        <span class="c1"># append master lists for each subject psd</span>
+         <span class="n">epoch_sub_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch_rem</span><span class="p">)</span>
+         <span class="n">channel_sub_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel_rem</span><span class="p">)</span>
+         <span class="n">aperiodic_params_sub_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aperiodic_params_rem</span><span class="p">)</span>
+         <span class="n">periodic_params_sub_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">periodic_params_rem</span><span class="p">)</span>
+         <span class="n">subject_sub_rem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subject_rem</span><span class="p">)</span>
+
+<span class="c1"># Dataframes</span>
+
+<span class="c1"># make df of periodic_params and add peak labels</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">periodic_params_sub_rem</span><span class="p">)):</span>
+         <span class="n">periodic_params_rem</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">periodic_params_sub_rem</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># Add peak labels</span>
+         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">peak_labels</span><span class="p">)):</span>
+                  <span class="n">peak_no</span> <span class="o">=</span> <span class="n">periodic_params_rem</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]</span>
+                  <span class="n">heading</span> <span class="o">=</span> <span class="n">peak_labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                  <span class="n">periodic_params_rem</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">heading</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">peak_no</span><span class="p">},</span>
+                                             <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+         <span class="c1"># Insert labels</span>
+         <span class="n">periodic_params_rem</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">subject_sub_rem</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+         <span class="n">periodic_params_rem</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">epoch_sub_rem</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+         <span class="n">periodic_params_rem</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">channel_sub_rem</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+         <span class="n">periodic_params_sub_rem</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">periodic_params_rem</span>
+
+<span class="c1"># make a df of aperiodic_params and add parameter labels</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aperiodic_params_sub_rem</span><span class="p">)):</span>
+         <span class="n">aperiodic_params_rem</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">aperiodic_params_sub_rem</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+         <span class="n">aperiodic_params_rem</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Exponent&#39;</span><span class="p">,</span> <span class="s1">&#39;Offset&#39;</span><span class="p">,</span> <span class="s1">&#39;R^2&#39;</span><span class="p">,</span> <span class="s1">&#39;Error&#39;</span><span class="p">]</span>
+
+         <span class="c1"># Insert labels</span>
+         <span class="n">aperiodic_params_rem</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">subject_sub_rem</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+         <span class="n">aperiodic_params_rem</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">epoch_sub_rem</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+         <span class="n">aperiodic_params_rem</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">channel_sub_rem</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+         <span class="n">aperiodic_params_sub_rem</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">aperiodic_params_rem</span>
+
+<span class="c1"># Concatenate the DataFrames within aperiodic_params_sub_w and periodic_params_sub_w</span>
+<span class="n">aperiodic_params_sub_rem</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">aperiodic_params_sub_rem</span><span class="p">)</span>
+<span class="n">periodic_params_sub_rem</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">periodic_params_sub_rem</span><span class="p">)</span>
+
+<span class="c1"># compiling data into a single wake dataframe</span>
+<span class="n">report_rem</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">aperiodic_params_sub_rem</span><span class="p">,</span> <span class="n">periodic_params_sub_rem</span><span class="p">,</span>
+             <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="s1">&#39;Subject&#39;</span><span class="p">])</span>
+<span class="c1"># Insert sleepstage labels</span>
+<span class="n">report_rem</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Stage&#39;</span><span class="p">,</span> <span class="s1">&#39;REM&#39;</span><span class="p">)</span>
+
+<span class="c1">#saving to csv file</span>
+<span class="n">report_rem</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/CSV/nk_fooof_rem.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="compiling-data">
+<h3>6. Compiling Data<a class="headerlink" href="#compiling-data" title="Permalink to this heading">#</a></h3>
+<p>This block of code compiles all sleepstage dataframes into a single dataframe <code class="docutils literal notranslate"><span class="pre">report_sleepstages</span></code>.
+Remove data with <code class="docutils literal notranslate"><span class="pre">R^2</span></code> value below 0.9. The block makes a dataframe solely for the Aperiodic Component of EEG Data which will be used in analysis.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Compile all sleepstages into one | Block 9</span>
+
+<span class="c1">#compile dataframe and save it to a csv file</span>
+<span class="n">report_sleepstages</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">report_w</span><span class="p">,</span><span class="n">report_n1</span><span class="p">,</span><span class="n">report_n2</span><span class="p">,</span><span class="n">report_n3</span><span class="p">,</span><span class="n">report_rem</span><span class="p">],</span>
+                                                                <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">report_sleepstages</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#saving to csv file</span>
+<span class="n">report_sleepstages</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/CSV/nk_fooof_sleepdata.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="c1">#remove periodic params and entries with r_squred vals &lt;0.9</span>
+<span class="n">report_sleepstages_II</span> <span class="o">=</span> <span class="n">report_sleepstages</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">report_sleepstages</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="mi">38</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">report_sleepstages_II</span> <span class="o">=</span> <span class="n">report_sleepstages_II</span><span class="p">[</span><span class="n">report_sleepstages_II</span><span class="p">[</span><span class="s1">&#39;R^2&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.9</span><span class="p">]</span>
+
+<span class="n">report_sleepstages_II</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="averaging-across-epochs">
+<h3>7. Averaging across Epochs<a class="headerlink" href="#averaging-across-epochs" title="Permalink to this heading">#</a></h3>
+<p>This block computes the average values and trimmed mean across epochs for each sleep stage and channel.</p>
+<ul class="simple">
+<li><p>Group by stage and channel, then take the mean of the aperiodic and periodic components for all epochs.</p></li>
+<li><p>Compute the trimmed mean for each column (<code class="docutils literal notranslate"><span class="pre">Exponent</span></code>, <code class="docutils literal notranslate"><span class="pre">Offset</span></code>, <code class="docutils literal notranslate"><span class="pre">R^2</span></code>, <code class="docutils literal notranslate"><span class="pre">Error</span></code>) in the <code class="docutils literal notranslate"><span class="pre">report_sleepstages_II</span></code> DataFrame, and add columns containing the trimmed mean values to the <code class="docutils literal notranslate"><span class="pre">Channel_avg_vals</span></code> DataFrame.</p></li>
+<li><p>Reset the index of the <code class="docutils literal notranslate"><span class="pre">Channel_avg_vals</span></code> DataFrame to convert the grouped columns (‘Channel’ and ‘Stage’) back to regular columns.</p></li>
+<li><p>Extract the channel number from the <code class="docutils literal notranslate"><span class="pre">Channel</span></code> column, convert it to an integer and update the <code class="docutils literal notranslate"><span class="pre">Channel</span></code> column in <code class="docutils literal notranslate"><span class="pre">Channel_avg_vals</span></code>.</p></li>
+<li><p>Sort the DataFrame by <code class="docutils literal notranslate"><span class="pre">Channel</span></code> and <code class="docutils literal notranslate"><span class="pre">Stage</span></code> in ascending order.</p></li>
+<li><p>Again reset the index of <code class="docutils literal notranslate"><span class="pre">Channel_avg_vals</span></code> and drop the old index to get a clean DataFrame containing the averaged values and trimmed means for each channel and sleep stage.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% AVERAGING ACROSS EPOCHS | Block 10</span>
+
+<span class="c1"># Trimmed mean</span>
+<span class="c1"># Define the trim percentage (here, 10%)</span>
+<span class="n">trim_percentage</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1">#  Group by columns and calculate trimmed mean for each group</span>
+<span class="n">Channel_avg_vals</span> <span class="o">=</span> <span class="n">report_sleepstages_II</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Stage&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">group</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">trim_mean</span><span class="p">,</span> <span class="n">proportiontocut</span><span class="o">=</span><span class="n">trim_percentage</span><span class="p">))</span>
+
+<span class="c1">#reset the index to convert the grouped columns (&#39;Channel&#39; and &#39;Stage&#39;) back to regular columns</span>
+<span class="n">Channel_avg_vals</span> <span class="o">=</span> <span class="n">Channel_avg_vals</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># Extracting the channel number from the &#39;Channel&#39; column</span>
+<span class="n">Channel_avg_vals</span><span class="p">[</span><span class="s1">&#39;Channel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Channel_avg_vals</span><span class="p">[</span><span class="s1">&#39;Channel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Sorting the DataFrame by &#39;Channel&#39; and &#39;Stage&#39;</span>
+<span class="n">Channel_avg_vals</span> <span class="o">=</span> <span class="n">Channel_avg_vals</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span> <span class="s1">&#39;Stage&#39;</span><span class="p">,</span><span class="s1">&#39;Channel&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="n">Channel_avg_vals</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="plotting-results">
+<h3>8. Plotting Results<a class="headerlink" href="#plotting-results" title="Permalink to this heading">#</a></h3>
+<section id="a-topoplot">
+<h4>a. Topoplot<a class="headerlink" href="#a-topoplot" title="Permalink to this heading">#</a></h4>
+<p>The following blocks generates topoplots for the exponent and offset values corresponding to 19 selected channels and 5 sleep stages.</p>
+<p>The topoplots provide a visual representation of the distribution of these values across different channels and sleep stages.</p>
+<p><strong>Parameters for Topoplot (Block 11):</strong></p>
+<p>Specify the channels to be included in the topoplot using the channels_to_pick_topo list.</p>
+<p>The code creates 2D dataframes (<code class="docutils literal notranslate"><span class="pre">Exponent_vals</span></code> and <code class="docutils literal notranslate"><span class="pre">Offset_vals</span></code>) containing the exponent and offset values for each channel across the five sleep stages.</p>
+<p>The index of the dataframes is set to the channel names for visualization using <code class="docutils literal notranslate"><span class="pre">yasa</span></code>.</p>
+<p><strong>Topoplot Generation (Block 12):</strong></p>
+<ul class="simple">
+<li><p>Exponent Topoplots</p></li>
+</ul>
+<p>The code iterates through the sleep stages and generates topoplots for the exponent values.</p>
+<p>For each stage, we define the color scale using the maximum and minimum exponent values across all channels and stages.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">yasa.topoplot</span></code> function is then called to create the topoplot, and <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> displays it.</p>
+<p>Additionally, the topoplot is saved as an image file in the specified location.</p>
+<ul class="simple">
+<li><p>Offset Topoplots</p></li>
+</ul>
+<p>Similarly, the code generates topoplots for the offset values. The process is similar to that of the exponent topoplots, with appropriate color scaling, plotting, and saving.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Parameters for Topoplot | Block 11</span>
+
+<span class="n">channels_to_pick_topo</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fp1&#39;</span><span class="p">,</span> <span class="s1">&#39;Fp2&#39;</span><span class="p">,</span> <span class="s1">&#39;F3&#39;</span><span class="p">,</span> <span class="s1">&#39;F4&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="s1">&#39;C4&#39;</span><span class="p">,</span> <span class="s1">&#39;P3&#39;</span><span class="p">,</span> <span class="s1">&#39;P4&#39;</span><span class="p">,</span> <span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">,</span>
+<span class="s1">&#39;F7&#39;</span><span class="p">,</span> <span class="s1">&#39;F8&#39;</span><span class="p">,</span> <span class="s1">&#39;T3&#39;</span><span class="p">,</span> <span class="s1">&#39;T4&#39;</span><span class="p">,</span> <span class="s1">&#39;Fz&#39;</span><span class="p">,</span> <span class="s1">&#39;Cz&#39;</span><span class="p">,</span> <span class="s1">&#39;Pz&#39;</span><span class="p">,</span> <span class="s1">&#39;A1&#39;</span><span class="p">,</span> <span class="s1">&#39;A2&#39;</span><span class="p">]</span>
+
+<span class="c1"># Exponet vals</span>
+
+<span class="c1"># make a 2D dataframe containing exponent vals corresponding to 19 channels for 5 sleepstages</span>
+<span class="n">Exponent_vals</span> <span class="o">=</span> <span class="n">Channel_avg_vals</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Stage&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Exponent&#39;</span><span class="p">)</span>
+
+<span class="c1"># The index MUST be the channel names for yasa</span>
+<span class="n">Exponent_vals</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">channels_to_pick_topo</span>
+
+<span class="c1"># Offset vals</span>
+
+<span class="c1"># make a 2D dataframe containing offset vals corresponding to 19 channels for 5 sleepstages</span>
+<span class="n">Offset_vals</span> <span class="o">=</span> <span class="n">Channel_avg_vals</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Stage&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Offset&#39;</span><span class="p">)</span>
+
+<span class="c1"># The index MUST be the channel names for yasa</span>
+<span class="n">Offset_vals</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">channels_to_pick_topo</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% TOPOPLOT | Block 12</span>
+
+<span class="c1"># define sleep_stages</span>
+<span class="n">sleep_stages</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">,</span><span class="s1">&#39;N1&#39;</span><span class="p">,</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span><span class="s1">&#39;N3&#39;</span><span class="p">,</span><span class="s1">&#39;REM&#39;</span><span class="p">]</span>
+
+<span class="c1"># EXPONENT TOPO</span>
+
+<span class="c1"># loop over sleep stages and plot the data# Create a 3-D array</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">sleep_stages</span><span class="p">)):</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">Exponent_vals</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="n">Exponent_vals</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">stage</span> <span class="o">=</span> <span class="n">sleep_stages</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">yasa</span><span class="o">.</span><span class="n">topoplot</span><span class="p">(</span><span class="n">Exponent_vals</span><span class="p">[</span><span class="n">stage</span><span class="p">],</span> <span class="n">title</span> <span class="o">=</span><span class="n">stage</span><span class="p">,</span>
+          <span class="n">vmin</span><span class="o">=</span> <span class="n">vmin</span><span class="p">,</span>
+          <span class="n">vmax</span><span class="o">=</span> <span class="n">vmax</span><span class="p">,</span>
+          <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span>
+          <span class="n">n_colors</span><span class="o">=</span> <span class="mi">10</span> <span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1">#adjusts layout of plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/Topoplots/&#39;</span>
+        <span class="o">+</span> <span class="s1">&#39;Exponent_allsubs_&#39;</span> <span class="o">+</span> <span class="n">stage</span> <span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># OFFSET TOPO</span>
+
+<span class="c1"># loop over sleep stages and plot the data</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">sleep_stages</span><span class="p">)):</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">Offset_vals</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="n">Offset_vals</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">stage</span> <span class="o">=</span> <span class="n">sleep_stages</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">yasa</span><span class="o">.</span><span class="n">topoplot</span><span class="p">(</span><span class="n">Offset_vals</span><span class="p">[</span><span class="n">stage</span><span class="p">],</span> <span class="n">title</span> <span class="o">=</span><span class="n">stage</span><span class="p">,</span>
+          <span class="n">vmin</span><span class="o">=</span> <span class="n">vmin</span><span class="p">,</span>
+          <span class="n">vmax</span><span class="o">=</span> <span class="n">vmax</span><span class="p">,</span>
+          <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span>
+          <span class="n">n_colors</span><span class="o">=</span> <span class="mi">10</span> <span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1">#adjusts layout of plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/Topoplots/&#39;</span>
+        <span class="o">+</span> <span class="s1">&#39;Offset_allsubs_&#39;</span> <span class="o">+</span> <span class="n">stage</span> <span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="b-scatter-plotting">
+<h4>b. Scatter Plotting<a class="headerlink" href="#b-scatter-plotting" title="Permalink to this heading">#</a></h4>
+<p>The following code blocks demonstrate the visualization of the aperiodic parameters using scatter plots. These plots represent the relationship between the <code class="docutils literal notranslate"><span class="pre">Offset</span></code> and <code class="docutils literal notranslate"><span class="pre">Exponent</span></code> values across sleepstages and channels.</p>
+<p><strong>Scatter Plot (Block 13)</strong></p>
+<p>The code creates a scatter plot by plotting <code class="docutils literal notranslate"><span class="pre">Offset</span></code> values on the x-axis and <code class="docutils literal notranslate"><span class="pre">Exponent</span></code> values on the y-axis. The plot represents the general distribution of the aperiodic parameters. The x and y axes are labeled appropriately, and the plot is given a title. Finally, the plot is displayed and saved as an image file.</p>
+<p><strong>Scatter Plot with Regression Line (Block 14)</strong></p>
+<p>In addition to the scatter plot, the code creates a scatter plot with a regression line using the Seaborn library. The regression line represents the overall trend in the relationship between <code class="docutils literal notranslate"><span class="pre">Offset</span></code> and <code class="docutils literal notranslate"><span class="pre">Exponent</span></code> values. The plot is displayed and saved as an image file for further reference.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%%  Finally, we can plot aperiodic parameters | Block 13</span>
+
+<span class="n">Exp</span> <span class="o">=</span> <span class="n">Channel_avg_vals</span><span class="p">[</span><span class="s1">&#39;Exponent&#39;</span><span class="p">]</span>
+<span class="n">Offs</span> <span class="o">=</span> <span class="n">Channel_avg_vals</span><span class="p">[</span><span class="s1">&#39;Offset&#39;</span><span class="p">]</span>
+
+<span class="c1"># Scatter plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Offs</span><span class="p">,</span> <span class="n">Exp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Offset&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Exponent&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Aperiodic Parameters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/results/&#39;</span> <span class="o">+</span> <span class="s1">&#39;Aperiodic_params&#39;</span><span class="p">,</span>
+    <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Scatter plot with regression line | Block 14</span>
+
+<span class="n">sb</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">Channel_avg_vals</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span> <span class="n">Offs</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="n">Exp</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;/serverdata/ccshome/nandanik/Documents/results/&#39;</span> <span class="o">+</span> <span class="s1">&#39;Aperiodic_params_reg&#39;</span><span class="p">,</span>
+    <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data_method.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data and Methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="result.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Results</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-description">General Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-description">Code Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-necessary-libraries">1. Load necessary libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-files">2. Load files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">3. Load Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-psds-to-respective-sleepstages">4. Assigning PSDs to respective sleepstages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-fitting-fooof">5. Model Fitting: FOOOF</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-wake-sleepstage">a. Wake sleepstage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-n1-sleepstage">b. N1 Sleepstage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-n2-sleepstage">c. N2 Sleepstage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-n3-sleepstage">d. N3 Sleepstage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#e-rem-sleepstage">e. REM Sleepstage</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compiling-data">6. Compiling Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#averaging-across-epochs">7. Averaging across Epochs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-results">8. Plotting Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-topoplot">a. Topoplot</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-scatter-plotting">b. Scatter Plotting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nandani Kundal
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Nandani Kundal.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

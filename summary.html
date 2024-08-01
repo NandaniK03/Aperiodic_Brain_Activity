@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Summaries &#8212; Sleep EEG: FOOOF Analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=a75df0fd"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'summary';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="Miscellaneous Scripts" href="miscellaneous_script.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Sleep EEG: FOOOF Analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_method.html">Data and Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code Script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="result.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="walk-through_script.html">Walk-through script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous_script.html">Miscellaneous Scripts</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Summaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/NandaniK03/FOOOF-docu" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/summary.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Summaries</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-free-and-oscillatory-spectral-measures-of-sleep-stages-in-humans-schneider-et-al-2022">Scale-free and oscillatory spectral measures of sleep stages in humans (Schneider et. al. 2022)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-average-bandpower-of-an-eeg-signal-raphael-vallet">Compute the average bandpower of an EEG signal (Raphael Vallet)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#foof-documentation">FOOF Documentation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="summaries">
+<h1>Summaries<a class="headerlink" href="#summaries" title="Permalink to this heading">#</a></h1>
+<section id="scale-free-and-oscillatory-spectral-measures-of-sleep-stages-in-humans-schneider-et-al-2022">
+<h2>Scale-free and oscillatory spectral measures of sleep stages in humans (Schneider et. al. 2022)<a class="headerlink" href="#scale-free-and-oscillatory-spectral-measures-of-sleep-stages-in-humans-schneider-et-al-2022" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fninf.2022.989262/full">Research Paper</a></p>
+<p><strong>Motivation-</strong></p>
+<p>The paper intends to investigate the scale-free and oscillatory characteristics of sleep stages in humans. It explores the spectral measures associated with different sleep stages and aims to understand the neurophysiological basis of it.</p>
+<p><strong>Source data-</strong></p>
+<p>The Budapest-Munich database of sleep records comprises whole night PSG Data collected from 251 healthy subjects, their age ranging from 4 to 69 years. Subjects were divided into 4 age groups - children (4–10 years, N =31), teenagers (10–20 years, N = 36), young adults (20–40 years, N = 150), and middle-aged adults (40–69 years, N= 34) (Bódizs et al., 2021a)</p>
+<p><strong>Methodology-</strong></p>
+<p>[A]. PSD Calculation :</p>
+<ol class="arabic simple">
+<li><p>EEG signals were divided using 4s sliding window while employing 50% overlap(2s step).</p></li>
+<li><p>Windows containing artifacts were rejected.</p></li>
+<li><p>Each window was Hanning tapered.</p></li>
+<li><p>FFT was applied to these tapered windows using mix-radix procedure, a variant of FFT algorithm suitable for windows of arbitrary length.</p></li>
+<li><p>Welch’s method was applied to obtain the average power-spectral density.</p></li>
+</ol>
+<p>[B]. Model fitting : The authors have used the “fitting oscillations and one over f” (FOOOF) method to extract parameters from the power spectra.</p>
+<ol class="arabic simple">
+<li><p>A first approximation of the aperiodic component is calculated using a power-law equation, which is then subtracted from the original spectrum to obtain a flattened version of the spectrum.</p></li>
+<li><p>The flattened spectrum is analyzed to identify and fit Gaussian functions that represent the periodic components (spectral peaks). These Gaussians are iteratively fitted and subtracted from the flattened spectrum.</p></li>
+<li><p>The total periodic component is removed from the original spectrum, resulting in a peak-removed spectrum.</p></li>
+<li><p>The aperiodic component is fitted again to the peak-removed spectrum.</p></li>
+<li><p>The final result is a combination of the fitted aperiodic and periodic components.</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/model_fit.png"><img alt="Schneider et. al. 2022" class="align-center" src="_images/model_fit.png" style="width: 289.2px; height: 275.6px;" /></a>
+<p><em>Schneider et. al. 2022</em></p>
+<p>[C]. Parameter Extraction : Several parameters were selected for analysis from the fitted spectra, which are : spectral slope, center frequency, power of the spectral peak with the highest power. The analysis included an alternative spectral intercept, which is determined as the intersection of the fitted power-law at the frequency of the largest oscillatory peak.</p>
+<p>The extracted spectral parameters were analyzed using ‘repeated measures ANOVA
+with sigma restricted parametrization’. The analysis included these categorical factors- Sex(M/F), Age group(4), Sleep stages(W, N1, N2, N3, REM), Brain region, Laterality.</p>
+<p><strong>Results-</strong></p>
+<ol class="arabic simple">
+<li><p>Spectral slope:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Average slope value reported highest in the wake state</p></li>
+<li><p>Average slope value decreased through NREM sleep stages</p></li>
+<li><p>Steeper slopes reported in younger subjects</p></li>
+<li><p>Steeper slopes in anterior recording regions</p></li>
+<li><p>Spectral slope value depicted increase with ageof subjects.</p></li>
+</ul>
+<img alt="Schneider et. al. 2022" class="align-center" src="_images/spectral_slope.png" />
+<p><em>Schneider et. al. 2022</em></p>
+<ol class="arabic simple" start="2">
+<li><p>Intercept:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Alternative intercept measure was adopted, calculated at frequency of largest peak</p></li>
+<li><p>Significant sleep stage main effect [F(4,836) = 35.73, p &lt; 0.00001, η2p = 0.15] indicating increased intercepts in the slow-wave sleep stages</p></li>
+<li><p>Age main effect [F(3,209) = 26.37, η2p = 0.27], with the intercept being higher in children.</p></li>
+<li><p>Stage-region interaction was observed [F(16,3344) = 9.18, p &lt; 0.00001, η2p = 0.04]. The increase in intercepts was more pronounced in the frontopolar and frontal regions.</p></li>
+</ul>
+<img alt="Schneider et. al. 2022" class="align-center" src="_images/intercept.png" />
+<p><em>Schneider et. al. 2022</em></p>
+<ol class="arabic simple" start="3">
+<li><p>Peak Central Frequency:</p></li>
+</ol>
+<ul class="simple">
+<li><p>The central frequency of the peak with the highest power was increased in the frontal and frontopolar regions.</p></li>
+<li><p>A significant main effect of region [F(4,824) = 58.138, p &lt; 0.00001, η2p = 0.22], indicating differences in central frequencies across brain regions.</p></li>
+<li><p>Dominant peak frequencies converged to characteristic sleep spindle frequency in NREM2 stage, most consistent in teenagers.</p></li>
+<li><p>Increased theta activity observed in NREM1 due to changes in aperiodic component, but the dominant peaks resulted from alpha oscillations (Riedner et al., 2016; Cakan et al., 2022).</p></li>
+</ul>
+<img alt="Schneider et. al. 2022" class="align-center" src="_images/center_freq.png" />
+<p><em>Schneider et. al. 2022</em></p>
+<ol class="arabic simple" start="4">
+<li><p>Peak power:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Significant main effects of sleep stage [F(4,824) = 88.765, p &lt; 0.00001, η^2p = 0.301]and brain region [F(4,824) = 97.645, p &lt; 0.00001, η^2p =0.321] were found for the power of the strongest spectral peak</p></li>
+<li><p>Peak power exhibits prominence in NREM2 stage in younger adults and declines with age.</p></li>
+</ul>
+<img alt="Schneider et. al. 2022" class="align-center" src="_images/pk_power.png" />
+<p><em>Schneider et. al. 2022</em></p>
+<ol class="arabic simple" start="5">
+<li><p>Adjusted Spectral slope:</p></li>
+</ol>
+<ul class="simple">
+<li><p>To obtain subject-independent measure, by subtracting wake stage slope from other stages of individual subjects.</p></li>
+<li><p>Exhibits stronger sleep stage main effect and stage-region interaction.</p></li>
+</ul>
+<img alt="Schneider et. al. 2022" class="align-center" src="_images/adj_slope.png" />
+<p><em>Schneider et. al. 2022</em></p>
+<p><strong>Discussions-</strong></p>
+<p>The spectral slope proved to be a strong indicator of sleep stages. The EEG spectral slopes suggest that wakefulness exhibits antipersistent Brownian motion, while sleep is characterized by persistent Brownian motion. State-specific values were adjusted by normalizing them against wakefulness-derived values, leading to even more reliable findings than using absolute values. Sleep stages exhibited a fine-tuned decrease in exponent relative to wakefulness, from -0.2 to -1 in NREM1 and SWS stages.</p>
+<p>The findings not only confirm the effects of sleep stages on EEG spectral slopes but also support the age and region dependency previously reported in studies (Voytek et al., 2015; Bódizs et al., 2021b; Pathania et al., 2022). Steeper spectra was a notable feature in younger subjects and in more anterior regions of brain. The most significant age-related flattening of EEG spectral slopes was observed in SWS, and antero-posterior differences in spectral steepness were particularly prominent in this stage. Additionally, the findings suggested that the alternative and adaptive spectral intercept is independent of the slope, providing non-redundant sleep stage effects when analyzing these intercepts.</p>
+<p>Central peak frequencies in EEG reflected neural oscillatory patterns specific to different sleep stages. Alpha activity (8-12 Hz) observed in resting wakefulness, sleep spindles (11-16 Hz) in NREM sleep stages including SWS, and theta (4-8 Hz) or beta (16-30 Hz) in REM sleep. Stable wake state alpha frequency observed in children. NREM2 and SWS stages exhibit prominent sleep spindle frequencies with antero-posterior differences, while NREM1 and REM sleep show beta oscillations with anterior predominance.</p>
+<p>The study found that high peak power values are characteristic of wakefulness and NREM2 sleep, lowest in NREM1 and REM, and intermediate in SWS.These findings align with known patterns of alpha and sleep spindle oscillations. Age-related changes in peak power indicate an initial increase in sleep spindle frequencies during teenage/young adult years, followed by a decrease in middle-aged adults.</p>
+<p>However, the study has limitations, such as missing age ranges, differences in sleep scoring rules, and assumptions about Gaussian spectral peaks.Despite these limitations, the results suggest that spectral parameters can serve as objective measures for characterizing sleep states, potentially enabling automated sleep evaluation.</p>
+</section>
+<section id="compute-the-average-bandpower-of-an-eeg-signal-raphael-vallet">
+<h2>Compute the average bandpower of an EEG signal (Raphael Vallet)<a class="headerlink" href="#compute-the-average-bandpower-of-an-eeg-signal-raphael-vallet" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://raphaelvallat.com/bandpower.html">Tutorial link</a></p>
+<p>The tutorial demonstrates how to compute the average band power of an EEG signal in a specific frequency range using Python. The tutorial talks about Welch’s periodogram method and the multitaper spectral estimation method of EEG signal processing.</p>
+<p>The flow of the code is as follows:</p>
+<ol class="arabic simple">
+<li><p>Import necessary libraries: NumPy, SciPy, SciPy. Integrate, matplotlib, seaborn</p></li>
+<li><p>Load EEG Data</p></li>
+<li><p>Define parameter: sample rate, time</p></li>
+<li><p>Plot the signal</p></li>
+<li><p>Compute power spectral density using Welch’s method</p></li>
+<li><p>Compute average delta band power using Simpson’s rule</p></li>
+<li><p>Compute relative band power</p></li>
+</ol>
+<p>The tutorial uses the following concepts and methodologies:</p>
+<ol class="arabic simple">
+<li><p><strong>FFT:</strong> FFT is a mathematical tool which decomposes a signal into its constituent frequencies. It represents a signal in the frequency domain.</p></li>
+<li><p><strong>Power Spectral Density:</strong> PSD is given by the magnitude squared of Fourier transform. It provides information about the strength of the constituent frequencies in the signal.</p></li>
+<li><p><strong>Welch’s Periodogram:</strong> Welch’s periodogram estimates the PSD of a signal. Welch’s method improves the accuracy of the classic periodogram in EEG signal processing. It does so by dividing the data into shorter segments, computing separate periodograms for each segment, and averaging them. This accounts for the time-varying nature of EEG signals and reduces bias and variance, resulting in a more reliable spectral analysis. However, this method comes at the cost of low frequency resolution.</p></li>
+</ol>
+<p><em>Frequency resolution</em>: Fres = 1/t = 1/30 = 0.033 (t= time duration of signal)</p>
+<p><em>Optimal window duration</em> = 2/ lowest freq. of interest = 2/0.5 = 4s (for delta freq)</p>
+<p><em>Note:</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The only thing that increases frequency resolution is time. Changes in sampling frequency do not increase the frequency resolution but only the frequency coverage.</p></li>
+<li><p>The maximum value of the x-axis of a Welch’s Periodogram is always half the sampling frequency of the original signal.</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p><strong>Simpson’s Rule:</strong> It’s an integration method used to approximate the area under the curve. The area can be decomposed into several parabola and then summed up. Here, it has been used for integrating the psd values within the range of a frequency band to estimate average band power.</p></li>
+<li><p><strong>Multitaper Method:</strong> This method was developed to overcome the limitations of classical spectral estimation techniques. It combines the advantages of classical and Welch’s periodograms to provide better spectral estimation with high frequency resolution and low variance. The method involves filtering the signal with optimal bandpass filters known as Slepian sequences, calculating a periodogram for each filtered data, and averaging the results. However, this method is computationally intensive and hence much slower than Welch’s method.</p></li>
+</ol>
+</section>
+<section id="foof-documentation">
+<h2>FOOF Documentation<a class="headerlink" href="#foof-documentation" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://fooof-tools.github.io/fooof/">Documentation site</a></p>
+<p>FOOOF is a tool for parameterizing neural power spectra. It models the power spectrum as a combination of an aperiodic component (1/f slope) and periodic components (peaks over the 1/f slope).</p>
+<p>The benefit of using FOOOF is that it characterizes the peaks in the power spectrum in terms of their center frequency, power, and bandwidth without the need to predefine specific bands of interest for the aperiodic component. It also provides a measure of the aperiodic component itself.</p>
+<p>FOOOF is written in python and is object-oriented.There is a Matlab wrapper that allows you to use FOOOF from Matlab.</p>
+<p>FOOOF works on frequency representations of power spectra in linear space. FOOFGroup can be used to fit a group of power spectra</p>
+<ol class="arabic simple">
+<li><p>To fit a single power spectra -</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the FOOOF object</span>
+<span class="kn">from</span> <span class="nn">fooof</span> <span class="kn">import</span> <span class="n">FOOOF</span>
+
+<span class="c1"># Initialize FOOOF object</span>
+<span class="n">fm</span> <span class="o">=</span> <span class="n">FOOOF</span><span class="p">()</span>
+
+<span class="c1"># Define frequency range across which to model the spectrum</span>
+<span class="n">freq_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+
+<span class="c1"># Model the power spectrum with FOOOF, and print out a report</span>
+<span class="n">fm</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">freq_range</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>FOOOF has settings for the algorithm -</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize a FOOOF model object with defined settings</span>
+<span class="n">fm</span> <span class="o">=</span> <span class="n">FOOOF</span><span class="p">(</span><span class="n">peak_width_limits</span><span class="o">=</span><span class="p">[</span><span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">],</span> <span class="n">max_n_peaks</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">min_peak_height</span><span class="o">=</span><span class="n">g</span><span class="p">,</span>
+<span class="n">peak_threshold</span><span class="o">=</span><span class="n">b</span> <span class="p">,</span> <span class="n">aperiodic_mode</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>To fit a group of Spectra -</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import FOOOFGroup</span>
+<span class="kn">from</span> <span class="nn">fooof</span> <span class="kn">import</span> <span class="n">FOOOFGroup</span>
+
+<span class="c1"># Initialize FOOOFGroup object</span>
+<span class="n">fg</span> <span class="o">=</span> <span class="n">FOOOFGroup</span><span class="p">(</span><span class="n">peak_width_limits</span><span class="o">=</span><span class="p">[</span><span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">],</span> <span class="n">max_n_peaks</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># Fit spectra and save results</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">spectra</span><span class="p">)</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">save_report</span><span class="p">()</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;fooof_group_results&#39;</span><span class="p">,</span> <span class="n">save_results</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="miscellaneous_script.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Miscellaneous Scripts</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-free-and-oscillatory-spectral-measures-of-sleep-stages-in-humans-schneider-et-al-2022">Scale-free and oscillatory spectral measures of sleep stages in humans (Schneider et. al. 2022)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-average-bandpower-of-an-eeg-signal-raphael-vallet">Compute the average bandpower of an EEG signal (Raphael Vallet)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#foof-documentation">FOOF Documentation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nandani Kundal
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Nandani Kundal.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
