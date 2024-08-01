@@ -1,0 +1,3 @@
+sphinxcontrib.youtube
+sphinx_copybutton
+sphinx_book_theme
